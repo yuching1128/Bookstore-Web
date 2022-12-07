@@ -10,9 +10,6 @@ const bookImageFileName = function (book: BookItem): string {
   name = name.replace(/'/g, "");
   return `${name}.gif`;
 };
-const updateCart = function (book: BookItem, quantity: number) {
-  cartStore.cart.update(book, quantity);
-};
 </script>
 
 <style scoped>
@@ -22,14 +19,6 @@ const updateCart = function (book: BookItem, quantity: number) {
   row-gap: 1em;
   width: fit-content;
   margin: 0 auto;
-}
-
-ul {
-  display: contents;
-}
-
-ul > li {
-  display: contents;
 }
 
 .table-heading {
@@ -54,11 +43,13 @@ ul > li {
   padding-right: 25px;
   font-size: 23px;
 }
+
 .heading-quantity {
   grid-column: 4 / 5;
   text-align: center;
   font-size: 23px;
 }
+
 .heading-subtotal {
   text-align: right;
   grid-column: -2 / -1;
@@ -74,29 +65,9 @@ ul > li {
   margin-right: 0;
 }
 
-img {
-  display: block;
-  width: 100px;
-  height: auto;
-}
-
-.rect {
-  background-color: var(--primary-color-dark);
-}
-
-.narrow-rect {
-  width: 75px;
-  height: 100px;
-}
-
-.square {
-  width: 100px;
-  height: 100px;
-}
-
-.wide-rect {
-  width: 125px;
-  height: 100px;
+.cart-book-title {
+  padding-top: 10px;
+  font-size: 23px;
 }
 
 .cart-book-price {
@@ -105,10 +76,7 @@ img {
   padding-right: 1em;
   font-size: 23px;
 }
-.cart-book-title {
-  padding-top: 10px;
-  font-size: 23px;
-}
+
 .cart-book-quantity {
   padding-top: 2px;
   padding-left: 1em;
@@ -123,12 +91,27 @@ img {
   padding-right: 1em;
   font-size: 23px;
 }
+
 .cart-book-total-price {
   padding-left: 660px;
   font-size: 23px;
 }
-/* Row separators in the table */
 
+ul {
+  display: contents;
+}
+
+ul > li {
+  display: contents;
+}
+
+img {
+  display: block;
+  width: 100px;
+  height: auto;
+}
+
+/* Row separators in the table */
 .line-sep {
   display: block;
   height: 2px;
@@ -137,7 +120,6 @@ img {
 }
 
 /* Increment/decrement buttons */
-
 .icon-button {
   color: var(--primary-color);
   font-size: 23px;
@@ -161,30 +143,6 @@ img {
 
 .dec-button:hover {
   color: #aaa;
-}
-
-/* Chevron buttons */
-
-.dec-arrow-button,
-.inc-arrow-button {
-  font-size: 1rem;
-  color: var(--primary-color);
-}
-
-.dec-arrow-button:hover,
-.inc-arrow-button:hover {
-  color: var(--primary-color-dark);
-}
-
-input[type="number"] {
-  width: 4em;
-}
-
-select {
-  background-color: var(--primary-color);
-  color: white;
-  border: 2px solid var(--primary-color-dark);
-  border-radius: 3px;
 }
 </style>
 
@@ -221,7 +179,7 @@ select {
             >
               <font-awesome-icon icon="fa-solid fa-circle-plus" />
             </button>
-            <span class="quantity">{{ item.quantity }}</span
+            <span>{{ item.quantity }}</span
             >&nbsp;
 
             <button
@@ -241,7 +199,7 @@ select {
       </template>
 
       <li class="line-sep"></li>
-      <li class="total-bar">
+      <li>
         <div style="font-size: 23px">Total</div>
         <div class="cart-book-total-price">
           {{ asDollarsAndCents(cartStore.cart.total) }}

@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
-import "@/assets/css/global.css"; // imports the global CSS before all other CSS files
+import "@/assets/css/global.css";
 import App from "./App.vue";
 import router from "./router";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -45,8 +45,3 @@ app.use(router);
 app.use(pinia);
 app.component("font-awesome-icon", FontAwesomeIcon);
 app.mount("#app");
-
-// createApp(App)
-//   .use(router)
-//   .component("font-awesome-icon", FontAwesomeIcon)
-//   .mount("#app");

@@ -15,55 +15,30 @@ header {
   color: var(--primary-color);
 }
 
-.text-logo {
-  font-family: var(--title-font-family);
-  display: inline-block;
-  text-align: left;
+.logo-image {
   float: left;
 }
 
-#logo-image {
-  float: left;
-}
-
-#logo-text {
+.logo-text {
   float: left;
   padding: 5px;
   margin-top: 3px;
 }
 
-.title-and-search-bar {
+.bookstore-name {
+  font-family: var(--default-font-family);
+  display: inline-block;
+  text-align: left;
+  float: left;
+}
+
+.search-bar {
   text-align: center;
   margin-top: 20px;
   font-size: 25px;
 }
 
-.header-dropdown-and-cart {
-  text-align: right;
-  margin-top: 10px;
-}
-
-.button-header,
-.button-header:visited {
-  display: inline-block;
-  background: var(--primary-color);
-  color: white;
-  text-decoration: none;
-  padding: 0.5em 0.5em;
-  cursor: pointer;
-  border: 2px none;
-  border-radius: 10px;
-  margin-left: 4px;
-}
-.button-header:hover {
-  background: var(--primary-color-dark);
-  color: white;
-}
-.button-header:active {
-  background: var(--primary-color-dark);
-  color: white;
-}
-.title-and-search-bar button {
+.search-bar button {
   float: left;
   width: 13%;
   padding: 0.33em;
@@ -75,7 +50,7 @@ header {
   border-right: none;
 }
 
-.title-and-search-bar button:visited {
+.search-bar button:visited {
   display: inline-block;
   background: var(--primary-color);
   color: white;
@@ -83,12 +58,13 @@ header {
   cursor: pointer;
 }
 
-.title-and-search-bar button:hover,
-.title-and-search-bar button:active {
+.search-bar button:hover,
+.search-bar button:active {
   background: var(--primary-color-dark);
   color: white;
 }
-.title-and-search-bar input[type="text"] {
+
+.search-bar input[type="text"] {
   padding: 4px;
   font-size: 26px;
   border: 4px solid var(--primary-color-dark);
@@ -99,7 +75,8 @@ header {
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
 }
-.title-and-search-bar input[type="text"]:focus {
+
+.search-bar input[type="text"]:focus {
   padding: 4px;
   font-size: 26px;
   border: 4px solid var(--primary-color-dark);
@@ -108,6 +85,35 @@ header {
   border-radius: 0px 10px 10px 0px;
   width: 80%;
 }
+
+.header-button,
+.header-button:visited {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 0.5em;
+  cursor: pointer;
+  border: 2px none;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
+.header-button:hover {
+  background: var(--primary-color-dark);
+  color: white;
+}
+
+.header-button:active {
+  background: var(--primary-color-dark);
+  color: white;
+}
+
+.header-dropdown-and-cart {
+  text-align: right;
+  margin-top: 10px;
+}
+
 @media (max-width: 600px) {
   header {
     flex-direction: column;
@@ -117,8 +123,8 @@ header {
 
 <template>
   <header class="container">
-    <section class="bookstore-logo">
-      <div id="logo-image">
+    <section>
+      <div class="logo-image">
         <router-link to="/">
           <img
             src="@/assets/images/site/logo.png"
@@ -128,15 +134,15 @@ header {
           />
         </router-link>
       </div>
-      <div id="logo-text">
+      <div class="logo-text">
         <router-link to="/">
-          <h1 class="text-logo">Sunny</h1>
+          <h1 class="bookstore-name">Sunny</h1>
           <br />
-          <h1 class="text-logo">Books</h1>
+          <h1 class="bookstore-name">Books</h1>
         </router-link>
       </div>
     </section>
-    <section class="title-and-search-bar">
+    <section class="search-bar">
       <form>
         <button type="submit">
           <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
@@ -147,13 +153,13 @@ header {
     <section class="header-dropdown-and-cart">
       <header-dropdown></header-dropdown>
       <router-link to="/cart">
-        <button class="button-header">
+        <button class="header-button">
           <font-awesome-icon icon="fa-solid fa-cart-shopping" /> cart ({{
             cartStore.count
           }})
         </button>
       </router-link>
-      <button class="button-header">
+      <button class="header-button">
         <font-awesome-icon icon="fa-solid fa-user" /> login
       </button>
     </section>

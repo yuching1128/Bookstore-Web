@@ -6,7 +6,6 @@ import { useCategoryStore } from "@/stores/CategoryStore";
 const categoryStore = useCategoryStore();
 categoryStore.fetchCategories();
 </script>
-
 <style></style>
 
 <template>

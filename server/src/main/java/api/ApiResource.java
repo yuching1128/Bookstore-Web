@@ -5,6 +5,9 @@ import business.category.Category;
 import business.category.CategoryDao;
 import business.book.Book;
 import business.book.BookDao;
+import business.order.OrderDetails;
+import business.order.OrderForm;
+import business.order.OrderService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
@@ -19,6 +22,7 @@ public class ApiResource {
     private final BookDao bookDao = ApplicationContext.INSTANCE.getBookDao();
     private final CategoryDao categoryDao = ApplicationContext.INSTANCE.getCategoryDao();
 
+    private final OrderService orderService = ApplicationContext.INSTANCE.getOrderService();
     @GET
     @Path("categories")
     @Produces(MediaType.APPLICATION_JSON)
@@ -141,4 +145,26 @@ public class ApiResource {
         }
 
     }
+    @POST
+    @Path("orders")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public OrderDetails placeOrder(OrderForm orderForm) {
+
+        try {
+            long orderId = orderService.placeOrder(orderForm.getCustomerForm(), orderForm.getCart());
+            if (orderId > 0) {
+                return orderService.getOrderDetails(orderId);
+            } else {
+                throw new ApiException.InvalidParameter("Unknown error occurred");
+            }
+
+        } catch (ApiException e) {
+            // NOTE: all validation errors go through here
+            throw e;
+        } catch (Exception e) {
+            throw new ApiException("order placement failed", e);
+        }
+    }
 }
+

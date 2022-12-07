@@ -19,6 +19,7 @@ const getBookImageUrl = function (book: BookItem): string {
   }
 };
 </script>
+
 <style scoped>
 .book-box {
   display: inline-flex;
@@ -26,29 +27,34 @@ const getBookImageUrl = function (book: BookItem): string {
   background-color: var(--card-background-color);
   gap: 0.25em;
 }
-#book-description {
-  display: inline-block;
-  position: relative;
-  top: -120px;
-  padding-left: 20px;
-  width: 185px;
-}
-#book-boxes {
+
+.book-boxes {
   display: inline-block;
   flex-direction: column;
   background-color: var(--card-background-color);
   padding: 1em;
   gap: 0.25em;
 }
-#book-image {
+
+.book-image {
   display: inline-block;
   position: relative;
 }
+
+.book-description {
+  display: inline-block;
+  position: relative;
+  top: -120px;
+  padding-left: 20px;
+  width: 185px;
+}
+
 .book-title {
   position: relative;
   color: var(--card-text-color);
   font-size: 30px;
 }
+
 .book-author {
   font-style: italic;
   position: relative;
@@ -56,55 +62,14 @@ const getBookImageUrl = function (book: BookItem): string {
   color: var(--card-text-color);
   font-size: 20px;
 }
+
 .book-price {
   position: relative;
   top: 60px;
   color: var(--card-text-color);
   font-size: 30px;
 }
-.add-button {
-  display: inline-block;
-  background: var(--primary-color);
-  color: white;
-  padding: 0.5em 0.5em;
-  cursor: pointer;
-  border: 2px none;
-  border-radius: 10px;
-  margin-top: 1px;
-  position: relative;
-  top: 100px;
-  font-size: 18px;
-}
-.add-button:visited {
-  display: inline-block;
-  background: var(--primary-color);
-  color: white;
-  text-decoration: none;
-  padding: 0.5em 0.5em;
-  cursor: pointer;
-  border: 2px none;
-  border-radius: 10px;
-}
-.add-button:hover,
-.add-button:active {
-  background: var(--primary-color-dark);
-  color: white;
-}
-.read-button {
-  display: inline-block;
-  background: var(--primary-color);
-  color: white;
-  padding: 0.5em 0.5em;
-  cursor: pointer;
-  border: 2px none;
-  border-radius: 10px;
-  margin-top: 1px;
-  position: relative;
-  top: 70px;
-  left: 0px;
-  font-size: 18px;
-  opacity: 0.85;
-}
+
 .read-button,
 .read-button:visited {
   display: inline-block;
@@ -124,12 +89,59 @@ const getBookImageUrl = function (book: BookItem): string {
   color: white;
   opacity: 0.9;
 }
+
+.read-button {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.5em 0.5em;
+  cursor: pointer;
+  border: 2px none;
+  border-radius: 10px;
+  margin-top: 1px;
+  position: relative;
+  top: 70px;
+  left: 0px;
+  font-size: 18px;
+  opacity: 0.85;
+}
+
+.add-button {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  padding: 0.5em 0.5em;
+  cursor: pointer;
+  border: 2px none;
+  border-radius: 10px;
+  margin-top: 1px;
+  position: relative;
+  top: 100px;
+  font-size: 18px;
+}
+
+.add-button:visited {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  padding: 0.5em 0.5em;
+  cursor: pointer;
+  border: 2px none;
+  border-radius: 10px;
+}
+
+.add-button:hover,
+.add-button:active {
+  background: var(--primary-color-dark);
+  color: white;
+}
 </style>
 
 <template>
   <li class="book-box">
-    <div id="book-boxes">
-      <div id="book-image">
+    <div class="book-boxes">
+      <div class="book-image">
         <img :src="getBookImageUrl(book)" :alt="book.title" :width="160" />
         <div
           style="position: absolute; left: 16px; top: 125px"
@@ -140,7 +152,7 @@ const getBookImageUrl = function (book: BookItem): string {
           </button>
         </div>
       </div>
-      <div id="book-description">
+      <div class="book-description">
         <div class="book-title">{{ book.title }}</div>
         <div class="book-author">{{ book.author }}</div>
         <div class="book-price">{{ asDollarsAndCents(book.price) }}</div>

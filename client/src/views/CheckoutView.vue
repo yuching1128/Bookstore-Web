@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, Ref } from "vue";
+import { reactive } from "vue";
 import useVuelidate from "@vuelidate/core";
 import {
   email,
@@ -97,12 +97,25 @@ async function submitOrder() {
     form.checkoutStatus = "ERROR";
   } else {
     form.checkoutStatus = "PENDING";
-    setTimeout(() => {
-      form.checkoutStatus = "OK";
-      setTimeout(() => {
+    await cartStore
+      .placeOrder({
+        name: form.name,
+        address: form.address,
+        phone: form.phone,
+        email: form.email,
+        ccNumber: form.ccNumber,
+        ccExpiryMonth: form.ccExpiryMonth,
+        ccExpiryYear: form.ccExpiryYear,
+      })
+      .then(() => {
+        form.checkoutStatus = "OK";
+        cartStore.clearCart();
         router.push({ name: "confirmation-view" });
-      }, 1000);
-    }, 1000);
+      })
+      .catch((reason) => {
+        form.checkoutStatus = "SERVER_ERROR";
+        console.log("Error placing order", reason);
+      });
   }
 }
 
@@ -117,6 +130,13 @@ function yearFrom(index: number) {
   background: var(--card-background-color);
   color: var(--primary-color);
 }
+
+.checkout-empty {
+  padding: 3em;
+  text-align: center;
+  font-size: 30px;
+}
+
 .checkout-page-body {
   display: flex;
   justify-content: center;
@@ -125,6 +145,7 @@ function yearFrom(index: number) {
   font-size: 25px;
 }
 
+/* form */
 form {
   display: flex;
   flex-direction: column;
@@ -145,29 +166,30 @@ form > div > select {
   border: 3px solid var(--primary-color-dark);
 }
 
-#exp-date-month * {
-  text-align: center;
-  background-color: #f1f1f1;
+label {
+  padding-top: 8px;
 }
-#exp-date-year * {
-  text-align: center;
-  background-color: #f1f1f1;
-}
+
 input {
   line-height: 30px;
   padding: 4px;
 }
-label {
-  padding-top: 8px;
-}
+
 option {
   line-height: 30px;
 }
-#checkout-empty {
-  padding: 3em;
+
+.exp-date-month * {
   text-align: center;
-  font-size: 30px;
+  background-color: #f1f1f1;
 }
+
+.exp-date-year * {
+  text-align: center;
+  background-color: #f1f1f1;
+}
+
+/* button */
 .continue-shop-buttons {
   margin-bottom: 2em;
   font-size: 23px;
@@ -179,6 +201,7 @@ option {
   color: white;
   margin-top: 40px;
 }
+
 .continue-shop-buttons:visited {
   display: inline-block;
   background: #aa7d53;
@@ -189,14 +212,17 @@ option {
   border: 2px none;
   border-radius: 10px;
 }
+
 .continue-shop-buttons:hover {
   background: #845937;
   color: white;
 }
+
 .continue-shop-buttons:active {
   background: var(--primary-color-dark);
   color: white;
 }
+
 .checkout-button {
   font-size: 26px;
   margin-right: 15px;
@@ -204,30 +230,7 @@ option {
   padding: 12px;
 }
 
-.purchase-info-box {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-end;
-}
-.total-charge-box {
-  padding-top: 1em;
-  text-align: end;
-}
-.purchase-info-box-info {
-  padding-top: 30px;
-}
-.row {
-  background-color: var(--primary-color);
-  height: 4px;
-  width: 50%;
-  margin-left: 300px;
-  align-content: flex-end;
-}
-ul,
-li {
-  text-align: end;
-  margin-top: 0.5em;
-}
+/* form text */
 .form-text-holder {
   color: #ef5f25;
   font-size: 24px;
@@ -236,17 +239,49 @@ li {
   text-align: center;
   text-decoration: underline;
 }
+
 .form-pending-text {
   padding-right: 180px;
 }
+
 .form-ok-text {
   padding-right: 180px;
+}
+
+/* purchase info */
+ul,
+li {
+  text-align: end;
+  margin-top: 0.5em;
+}
+
+.purchase-info-box {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+}
+
+.total-charge-box {
+  padding-top: 1em;
+  text-align: end;
+}
+
+.purchase-info-box-info {
+  padding-top: 30px;
+}
+
+.row {
+  background-color: var(--primary-color);
+  height: 4px;
+  width: 50%;
+  margin-left: 300px;
+  align-content: flex-end;
 }
 </style>
 
 <template>
   <div class="checkout-page">
-    <section id="checkout-empty" v-if="cart.empty">
+    <section class="checkout-empty" v-if="cart.empty">
       <p>Your cart is empty.</p>
       <p>Please add an item to your cart to checkout.</p>
       <router-link
@@ -328,7 +363,7 @@ li {
           <label>Exp Date</label>
           <select
             v-model="$v.ccExpiryMonth.$model"
-            id="exp-date-month"
+            class="exp-date-month"
             style="width: 210px; height: 42px"
           >
             <option
@@ -341,7 +376,7 @@ li {
           </select>
           <select
             v-model="$v.ccExpiryYear.$model"
-            id="exp-date-year"
+            class="exp-date-year"
             style="width: 105px; height: 42px"
           >
             <option
@@ -366,28 +401,26 @@ li {
         </div>
         <div v-if="form.checkoutStatus !== ''" class="form-text-holder">
           <template v-if="form.checkoutStatus === 'ERROR'">
-            <div class="form-text form-error-text" v-if="$v.$invalid">
+            <div class="form-error-text" v-if="$v.$invalid">
               <font-awesome-icon icon="fa-solid fa-triangle-exclamation" />
               Please fix the problems above and try again.
             </div>
           </template>
 
           <template v-if="form.checkoutStatus === 'PENDING'">
-            <div class="form-text form-pending-text">Processing...</div>
+            <div class="form-pending-text">Processing...</div>
           </template>
           <template v-if="form.checkoutStatus === 'OK'">
-            <div class="form-text form-ok-text">Order placed...</div>
+            <div class="form-ok-text">Order placed...</div>
           </template>
           <template v-if="form.checkoutStatus === 'SERVER_ERROR'">
-            <div class="form-text form-error-text">
+            <div class="form-error-text">
               <font-awesome-icon icon="fa-solid fa-triangle-exclamation" />
               An unexpected error occurred, please try again.
             </div>
           </template>
         </div>
       </form>
-      <!-- TODO (style): Fix error message placement so they nearer to the correct fields. -->
-      <!-- TODO (style): HINT: Use another <div> and label, input, and error, and use flexbox to style. -->
       <section class="purchase-info-box">
         <div class="total-charge-box">
           <p>

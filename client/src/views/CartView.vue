@@ -12,14 +12,11 @@ import { useCartStore } from "@/stores/CartStore";
 const cartStore = useCartStore();
 import { useCategoryStore } from "@/stores/CategoryStore";
 const categoryStore = useCategoryStore();
-const clearCart = function () {
-  cartStore.cart.clear();
-};
 </script>
 
 <template>
-  <div class="cart-view">
-    <section v-if="cartStore.count === 0" class="empty-cart-page">
+  <div>
+    <section v-if="cartStore.count === 0">
       <div class="empty-state">Your cart is empty.</div>
       <router-link
         :to="{
@@ -29,24 +26,24 @@ const clearCart = function () {
           },
         }"
       >
-        <button class="continue-shop-buttons">
+        <button class="continue-shop-button">
           <font-awesome-icon icon="fa-solid fa-circle-arrow-left" />
           &nbsp;Continue Shopping
         </button>
       </router-link>
     </section>
-    <section v-else class="cart-button">
+    <section v-else>
       <p class="non-empty-state" v-if="cartStore.count === 1">
         Your cart has 1 book in it.
       </p>
       <p class="non-empty-state" v-else>
         Your cart has {{ cartStore.count }} books in it.
       </p>
-      <p class="non-empty-state-1">
+      <p class="non-empty-state-amount">
         Your total amount is {{ asDollarsAndCents(cartStore.cart.total) }}.
       </p>
       <cart-table></cart-table>
-      <div class="continue-shop-button">
+      <div>
         <router-link
           :to="{
             name: 'category-view',
@@ -67,7 +64,7 @@ const clearCart = function () {
           </button>
         </router-link>
       </div>
-      <div class="clear-cart-button">
+      <div class="clear-cart">
         <button class="clear-button" @click="cartStore.clearCart">
           Clear Cart
         </button>
@@ -82,17 +79,20 @@ const clearCart = function () {
   text-align: center;
   font-size: 30px;
 }
+
 .non-empty-state {
   margin-top: 1.5em;
   text-align: center;
   font-size: 25px;
 }
-.non-empty-state-1 {
+
+.non-empty-state-amount {
   margin-bottom: 1.5em;
   text-align: center;
   font-size: 25px;
 }
-.continue-shop-buttons {
+
+.continue-shop-button {
   margin-left: -130px;
   margin-bottom: 3em;
   font-size: 25px;
@@ -106,7 +106,8 @@ const clearCart = function () {
   background: #aa7d53;
   color: white;
 }
-.continue-shop-buttons:visited {
+
+.continue-shop-button:visited {
   display: inline-block;
   background: #aa7d53;
   color: white;
@@ -116,30 +117,21 @@ const clearCart = function () {
   border: 2px none;
   border-radius: 10px;
 }
-.continue-shop-buttons:hover {
+
+.continue-shop-button:hover {
   background: #845937;
   color: white;
 }
-.continue-shop-buttons:active {
+
+.continue-shop-button:active {
   background: var(--primary-color-dark);
   color: white;
 }
-.continue-shop-buttons {
+
+.continue-shop-button {
   font-size: 23px;
 }
-.clear-cart-button {
-  margin-top: 20px;
-  margin-bottom: 30px;
-  font-size: 18px;
-}
-.checkout-button {
-  margin-left: 480px;
-  font-size: 23px;
-  display: inline-block;
-  position: relative;
-  top: 50%;
-  left: 50%;
-}
+
 .continue-button {
   background: #aa7d53;
   color: white;
@@ -156,6 +148,7 @@ const clearCart = function () {
   left: 50%;
   font-size: 23px;
 }
+
 .continue-button:visited {
   display: inline-block;
   background: #aa7d53;
@@ -166,14 +159,32 @@ const clearCart = function () {
   border: 2px none;
   border-radius: 10px;
 }
+
 .continue-button:hover {
   background: #845937;
   color: white;
 }
+
 .continue-button:active {
   background: var(--primary-color-dark);
   color: white;
 }
+
+.checkout-button {
+  margin-left: 480px;
+  font-size: 23px;
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  left: 50%;
+}
+
+.clear-cart {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 18px;
+}
+
 .clear-button {
   margin-left: -450px;
   display: inline-block;
@@ -181,9 +192,8 @@ const clearCart = function () {
   text-decoration: none;
   padding: 0.5em 0.5em;
   cursor: pointer;
-  border: 3px solid;
+  border: 3px solid #aa7d53;
   border-radius: 10px;
-  border-color: #aa7d53;
   position: relative;
   top: 50%;
   left: 50%;
@@ -194,20 +204,17 @@ const clearCart = function () {
   text-decoration: none;
   padding: 0.5em 0.5em;
   cursor: pointer;
-  border: 3px solid;
+  border: 3px solid #aa7d53;
   border-radius: 10px;
-  border-color: #aa7d53;
 }
 .clear-button:hover {
   background: #cea77e;
   color: white;
-  border: 3px solid;
-  border-color: #cea77e;
+  border: 3px solid #cea77e;
 }
 .clear-button:active {
   background: #cea77e;
   color: white;
-  border: 3px solid;
-  border-color: #cea77e;
+  border: 3px solid #cea77e;
 }
 </style>

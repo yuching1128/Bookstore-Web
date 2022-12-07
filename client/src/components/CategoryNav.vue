@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { inject } from "vue";
-// eslint-disable-next-line no-undef
 import { useRoute } from "vue-router";
 const route = useRoute();
 import { useCategoryStore } from "@/stores/CategoryStore";
@@ -32,7 +30,7 @@ const categoryStore = useCategoryStore();
 </style>
 
 <template>
-  <nav class="category-nav">
+  <nav>
     <ul class="category-buttons">
       <li
         v-for="category in categoryStore.categoryList"
@@ -41,7 +39,6 @@ const categoryStore = useCategoryStore();
         <router-link
           :to="{ name: 'category-view', params: { name: category.name } }"
           class="button category-buttons selected-category-button"
-          id="button selected-category-button"
           v-if="route.params.name === category.name"
         >
           {{ category.name }}
@@ -49,7 +46,6 @@ const categoryStore = useCategoryStore();
         <router-link
           :to="{ name: 'category-view', params: { name: category.name } }"
           class="button category-buttons unselected-category-button"
-          id="button unselected-category-button"
           v-if="route.params.name !== category.name"
         >
           {{ category.name }}

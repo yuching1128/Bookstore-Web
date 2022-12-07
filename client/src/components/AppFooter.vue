@@ -12,7 +12,20 @@ footer {
 .links {
   text-align: center;
 }
-.but {
+
+.link-text {
+  font-size: 30px;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.social-media-icons {
+  margin-top: 30px;
+  flex-direction: row;
+  text-align: center;
+}
+
+.icon-button {
   display: inline-block;
   background: var(--primary-color);
   color: white;
@@ -25,7 +38,8 @@ footer {
   font-size: 25px;
   margin: 4px;
 }
-.but:visited {
+
+.icon-button:visited {
   display: inline-block;
   background: var(--primary-color);
   color: white;
@@ -35,23 +49,11 @@ footer {
   border: 2px none;
   border-radius: 10px;
 }
-
-.but:hover,
-.but:active {
+.icon-button:hover,
+.icon-button:active {
   background: var(--primary-color-dark);
   color: white;
 }
-.link-text {
-  font-size: 30px;
-  color: var(--primary-color);
-  text-decoration: none;
-}
-.social-media-icons {
-  margin-top: 30px;
-  flex-direction: row;
-  text-align: center;
-}
-
 .copy-right {
   height: inherit;
   width: inherit;
@@ -73,13 +75,13 @@ footer {
         <router-link to="/" style="padding-left: 50px">Direction</router-link>
       </div>
       <div class="social-media-icons" style="position: relative; right: 25px">
-        <router-link to="/" class="but"
+        <router-link to="/" class="icon-button"
           ><font-awesome-icon icon="fa-brands fa-facebook-f"
         /></router-link>
-        <router-link to="/" class="but"
+        <router-link to="/" class="icon-button"
           ><font-awesome-icon icon="fa-brands fa-instagram"
         /></router-link>
-        <router-link to="/" class="but"
+        <router-link to="/" class="icon-button"
           ><font-awesome-icon icon="fa-brands fa-twitter"
         /></router-link>
       </div>

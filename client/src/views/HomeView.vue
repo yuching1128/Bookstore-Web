@@ -1,12 +1,18 @@
-<script setup lang="ts">
-import HomeCategoryList from "../components/HomeCategoryList.vue";
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .home-page {
   display: flex;
   height: 500px;
 }
+
+.welcome-text {
+  width: 15em;
+  margin-top: 10px;
+  font-size: 30px;
+  color: #807974;
+}
+
 .category-images {
   display: flex;
   flex-direction: row;
@@ -14,18 +20,12 @@ import HomeCategoryList from "../components/HomeCategoryList.vue";
   gap: 1em;
   float: right;
 }
-.welcome-text {
-  width: 15em;
-  margin-top: 10px;
-  font-size: 30px;
-  color: #807974;
-}
 </style>
 <template>
   <div class="home-page">
-    <section class="welcome-text flow-content container">
+    <section class="welcome-text container">
       <div style="position: relative; width: 600px; height: 500px; top: -75px">
-        <img src="@/assets/images//home/home-sunny.png" />
+        <img src="@/assets/images//home/home-sunny-left.png" />
         <div
           style="
             position: absolute;
