@@ -15,5 +15,5 @@ Link may not be available as it is run on Virginia Tech servers
 
 ### Web Appearance and Design
 #### Homepage
-<img width="400" alt="Home" src="https://user-images.githubusercontent.com/39873770/206364480-bb21dfc3-d8bd-4010-a2d0-cd2a88fa1e69.png">
+<img width="450" alt="Home" src="https://user-images.githubusercontent.com/39873770/206364480-bb21dfc3-d8bd-4010-a2d0-cd2a88fa1e69.png">
 
