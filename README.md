@@ -17,4 +17,6 @@ Link may not be available as it is run on Virginia Tech servers
 ### Homepage
 <img width="450" alt="Home" src="https://user-images.githubusercontent.com/39873770/206364480-bb21dfc3-d8bd-4010-a2d0-cd2a88fa1e69.png">
 ### Category page
+<img width="450" alt="Category" src="https://user-images.githubusercontent.com/39873770/206368168-8ea2cd33-dea6-4d46-a3cc-d8335fe89215.png">
+
 
