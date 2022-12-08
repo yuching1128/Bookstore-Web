@@ -1,4 +1,5 @@
-# Bookstore-Web
+# Online Bookstore Web
+### Introduction
 This is a hardening and RESTful online bookstore application. 
 The frontend of the web application is built using the Vue framework, and the backend uses mySQL. 
 It makes use of the Tomcat server and uses Ajax to update the website's content. 
