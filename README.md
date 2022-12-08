@@ -8,3 +8,10 @@ You can purchase books using the online app for the bookshop by adding them to y
 Information about the customer, including name, address, phone number, and email, is requested on the checkout page. 
 Through Vuelidate and server side validation, the data would be verified according to its format. 
 The client and order information would be entered into the database and the shopping cart would be cleared when pressing the complete purchase button.
+
+### Web Link
+http://cs5244.cs.vt.edu:8080/YuChingBookstoreTransact/
+Link may not be available as it is run on Virginia Tech servers
+
+### Web Appearance and Design
+#### Homepage
