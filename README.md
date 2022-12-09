@@ -22,3 +22,6 @@ Link may not be available as it is run on Virginia Tech servers
 
 ### Shopping Cart page
 <img width="450" alt="Cart" src="https://user-images.githubusercontent.com/39873770/206369823-5ab5b50d-ad6a-4250-857f-86d3f17f9ae2.png">
+
+### Checkout page
+<img width="450" alt="Checkout" src="https://user-images.githubusercontent.com/39873770/206610655-31b58dba-6d73-420c-95d7-f21cdcb73847.png">
