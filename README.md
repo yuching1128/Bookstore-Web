@@ -45,6 +45,9 @@ In the server side validation, before passing the information to the database, t
 ### Empty cart no checkout information view
 <img width="450" alt="No checkout" src="https://user-images.githubusercontent.com/39873770/206621984-7a6bab22-4344-4042-bbe9-f809b193b89c.png">
 
+### No placed order view
+<img width="450" alt="No confirmation" src="https://user-images.githubusercontent.com/39873770/206622212-e608f845-fe04-42ea-adf3-f1a1f43d52c6.png">
+
 ### Not found page
 <img width="450" alt="Not found" src="https://user-images.githubusercontent.com/39873770/206621092-dae8dda7-2c93-4030-88d0-dcde476e86b4.png">
 
