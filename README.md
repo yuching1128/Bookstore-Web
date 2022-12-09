@@ -31,5 +31,8 @@ Link may not be available as it is run on Virginia Tech servers
 <img width="450" alt="Confirmation" src="https://user-images.githubusercontent.com/39873770/206614163-a6f4fe8d-606d-4022-8bda-0ad4c0864e19.png">
 
 ## Validation
+### Client side
 <img width="450" alt="Validation" src="https://user-images.githubusercontent.com/39873770/206617369-89741eb4-4e92-4d7b-9056-01d12adf6fa2.png">
 The client-side validation would validate the name, address, phone, email, and credit card information to check if they are in a correct format.
+
+### Server side
