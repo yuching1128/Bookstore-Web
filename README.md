@@ -22,7 +22,7 @@ Link may not be available as it is run on Virginia Tech servers
 <img width="450" alt="Category" src="https://user-images.githubusercontent.com/39873770/206368168-8ea2cd33-dea6-4d46-a3cc-d8335fe89215.png">
 
 ### Shopping Cart page
-<img width="450" alt="Cart" src="https://user-images.githubusercontent.com/39873770/206369823-5ab5b50d-ad6a-4250-857f-86d3f17f9ae2.png">
+<img width="450" alt="Cart" src="https://user-images.githubusercontent.com/39873770/206620086-5a028418-d1a5-4a4d-a4ce-834f534f70a0.png">
 
 ### Checkout page
 <img width="450" alt="Checkout" src="https://user-images.githubusercontent.com/39873770/206610655-31b58dba-6d73-420c-95d7-f21cdcb73847.png">
