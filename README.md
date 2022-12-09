@@ -39,6 +39,9 @@ The client-side validation would validate the name, address, phone, email, and c
 In the server side validation, before passing the information to the database, the customer information would be further checked as well as the shopping cart (invalid price, invalid quantity etc.). The server side would clean the customer data and also organize the information format(such as phone xxx-xxx-xxxx is the same as (xxx)xxx-xxxx). If the information is not verified, the purchase cannot be completed, and an error message is returned as a response.
 
 ## Hardening
+### Empty cart 
+<img width="450" alt="Empty cart" src="https://user-images.githubusercontent.com/39873770/206621324-afa1f56c-5c06-42ca-930a-4c3f45d10f9b.PNG">
+
 ### Not found page
 <img width="450" alt="Not found" src="https://user-images.githubusercontent.com/39873770/206621092-dae8dda7-2c93-4030-88d0-dcde476e86b4.png">
 
