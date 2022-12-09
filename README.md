@@ -11,7 +11,6 @@ The client and order information would be entered into the database and the shop
 
 ### Web Link
 http://cs5244.cs.vt.edu:8080/YuChingBookstoreTransact/
-
 Link may not be available as it is run on Virginia Tech servers
 
 ## Web Appearance and Design
