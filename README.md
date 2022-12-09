@@ -36,3 +36,4 @@ Link may not be available as it is run on Virginia Tech servers
 The client-side validation would validate the name, address, phone, email, and credit card information to check if they are in a correct format.
 
 ### Server side
+In the server side validation, before passing the information to the database, the customer information would be further checked as well as the shopping cart (invalid price, invalid quantity etc.). The server side would clean the customer data and also organize the information format(such as phone xxx-xxx-xxxx is the same as (xxx)xxx-xxxx). If the information is not verified, the purchase cannot be completed, and an error message is returned as a response.
