@@ -37,3 +37,9 @@ The client-side validation would validate the name, address, phone, email, and c
 
 ### Server side
 In the server side validation, before passing the information to the database, the customer information would be further checked as well as the shopping cart (invalid price, invalid quantity etc.). The server side would clean the customer data and also organize the information format(such as phone xxx-xxx-xxxx is the same as (xxx)xxx-xxxx). If the information is not verified, the purchase cannot be completed, and an error message is returned as a response.
+
+## Hardening
+### Not found page
+<img width="450" alt="Not found" src="https://user-images.githubusercontent.com/39873770/206621092-dae8dda7-2c93-4030-88d0-dcde476e86b4.png">
+
+The website shows a not found page when customer enters an invalid address in the address bar.
