@@ -26,3 +26,7 @@ Link may not be available as it is run on Virginia Tech servers
 
 ### Checkout page
 <img width="450" alt="Checkout" src="https://user-images.githubusercontent.com/39873770/206610655-31b58dba-6d73-420c-95d7-f21cdcb73847.png">
+
+### Confirmation page
+<img width="450" alt="Confirmation" src="https://user-images.githubusercontent.com/39873770/206614163-a6f4fe8d-606d-4022-8bda-0ad4c0864e19.png">
+
